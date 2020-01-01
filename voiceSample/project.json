@@ -141,10 +141,10 @@
                         "id": "1f31ac26-924c-d594-57e7-f66721736840",
                         "type": "Javascript2",
                         "label": "STT",
-                        "x": 17.771767384228866,
+                        "x": 16.760937569950556,
                         "y": 192.93703150136497,
                         "parameters": {
-                            "code": "define({\n\t// The input ports of the Javascript node, name of input and type\n\tinputs:{\n\t    // ExampleInput:'number',\n\t    // Available types are 'number', 'string', 'boolean', 'color' and 'signal',\n\t    mySignal:'signal'\n\t},\n\t\n\t// The output ports of the Javascript node, name of output and type\n\toutputs:{\n\t    // ExampleOutput:'string',\n\t    text: \"string\",\n\t    received: \"boolean\",\n\t    finalTextReceived:\"boolean\"\n\t},\n\t\n\t// All signal inputs need their own function with the corresponding name that\n\t// will be run when a signal is received on the input.\n\tmySignal:function(inputs,outputs) {\n\t\t// ...\n\t\toutputs.received = false;\n\t\toutputs.finalTextReceived = false;\n\t},\n\t\n\t// This function will be called when any of the inputs have changed\n\tchange:function(inputs,outputs) {\n\t\t// ...\n\t\tif(inputs.mySignal){\n\t\t    outputs.received = false;\n\t\tSpeechRecognition = webkitSpeechRecognition || SpeechRecognition;\n          const recognition = new SpeechRecognition();\n          \n          recognition.interimResults = true;\n        \n          recognition.onresult = (event) => {\n            outputs.text = event.results[0][0].transcript;\n            this.flagOutputDirty(\"text\");\n            this.sendSignalOnOutput(\"received\");\n            console.log(event.results[0].isFinal);\n            outputs.finalTextReceived = (event.results[0].isFinal) ? true:false;\n            this.flagOutputDirty(\"finalTextReceived\");\n          }\n        \n          recognition.start();\n\t\t}\n\t}\n})\n\n"
+                            "code": "define({\n\t// The input ports of the Javascript node, name of input and type\n\tinputs:{\n\t    // ExampleInput:'number',\n\t    // Available types are 'number', 'string', 'boolean', 'color' and 'signal',\n\t    mySignal:'signal'\n\t},\n\t\n\t// The output ports of the Javascript node, name of output and type\n\toutputs:{\n\t    // ExampleOutput:'string',\n\t    text: \"string\",\n\t    received: \"boolean\",\n\t    finalTextReceived:\"boolean\"\n\t},\n\t\n\t// All signal inputs need their own function with the corresponding name that\n\t// will be run when a signal is received on the input.\n\tmySignal:function(inputs,outputs) {\n\t\t// ...\n\t\toutputs.received = false;\n\t\toutputs.finalTextReceived = false;\n\t\t\n\t\toutputs.received = false;\n\t\tSpeechRecognition = webkitSpeechRecognition || SpeechRecognition;\n          const recognition = new SpeechRecognition();\n          \n          recognition.interimResults = true;\n        \n          recognition.onresult = (event) => {\n            outputs.text = event.results[0][0].transcript;\n            this.flagOutputDirty(\"text\");\n            this.sendSignalOnOutput(\"received\");\n            console.log(event.results[0].isFinal);\n            outputs.finalTextReceived = (event.results[0].isFinal) ? true:false;\n            this.flagOutputDirty(\"finalTextReceived\");\n          }\n        \n          recognition.start();\n\t},\n\t\n\t// This function will be called when any of the inputs have changed\n\tchange:function(inputs,outputs) {\n\t\t// ...\n\t}\n})\n\n"
                         },
                         "ports": [],
                         "dynamicports": [
@@ -190,8 +190,8 @@
                     {
                         "id": "9eef5ce3-9417-58d4-b3b5-7646905c20f0",
                         "type": "States",
-                        "x": 39.189306226198624,
-                        "y": 6.7927583731172945,
+                        "x": 72.15736437236288,
+                        "y": 0.4118438932145523,
                         "parameters": {
                             "states": "big,small",
                             "values": "siz",
@@ -388,8 +388,8 @@
                     {
                         "id": "b15b883f-76ea-5779-c059-506f201b4734",
                         "type": "States",
-                        "x": 291.97954751919497,
-                        "y": 91.79607519053039,
+                        "x": 338.7729203718152,
+                        "y": 81.16121772402576,
                         "parameters": {
                             "states": "speeching,stopped",
                             "values": "siz",
@@ -585,8 +585,8 @@
                     {
                         "id": "6503d59e-bf14-1956-4cdd-75cabc4ba7c5",
                         "type": "Boolean",
-                        "x": 324.3261015761004,
-                        "y": -228.6369759356901,
+                        "x": 399.8335895882831,
+                        "y": -223.3195472024378,
                         "parameters": {
                             "value": true
                         },
@@ -609,8 +609,8 @@
                     {
                         "id": "1be65c02-8f4b-6174-a27f-58e02e565860",
                         "type": "Timer",
-                        "x": 341.5102084188316,
-                        "y": -58.817567136936006,
+                        "x": 409.5732962044611,
+                        "y": -77.96031057664429,
                         "parameters": {
                             "duration": 300
                         },
